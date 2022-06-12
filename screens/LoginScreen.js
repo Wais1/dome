@@ -29,11 +29,11 @@ const LoginScreen = ({ navigation }) => {
   return (
     <KeyboardAvoidingView behavior='padding' style={styles.container}>
         <StatusBar style="light" />
-        <Image source ={{
+        {/* <Image source ={{
                 uri: "https://blog.mozilla.org/internetcitizen/files/2018/08/signal-logo.png",
             }}
             style={{ width: 200, height: 200 }}
-            />
+            /> */}
         <View style={styles.inputContainer}>
             <Input placeholder='Email' autoFocus type="email" value={email} onChangeText={(text) => setEmail(text)} />
             <Input placeholder='Password' secureTextEntry type="password" value={password} onChangeText={(text) => setPassword(text)} onSubmitEditing={signIn}/>
