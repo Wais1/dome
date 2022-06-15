@@ -28,13 +28,14 @@ const HomeScreen = ({ navigation }) => {
     useLayoutEffect(() => {
         navigation.setOptions({
             title: "Dome",
-            headerStyle: { backgroundColor: '#fff' },
-            headerTitleStyle: { color: "black"},
-            headerTintColor: "black",
+            headerStyle: { backgroundColor: '#FF83A8' },
+            headerTitleStyle: { color: "white"},
+            headerTintColor: "white",
             headerLeft: () => (
                 <View style={{ marginLeft: 20}}>
                     <TouchableOpacity onPress={signOutUser} activeOpacity={ 0.5 }>
-                        <Avatar rounded source={{ uri: auth?.currentUser?.photoURL }} />
+                        {/* <Avatar rounded source={{ uri: auth?.currentUser?.photoURL }} /> */}
+                        <Text style={{color:'white'}}>Logout</Text>
                     </TouchableOpacity>
                 </View>
             ),
@@ -45,9 +46,9 @@ const HomeScreen = ({ navigation }) => {
                     width: 80,
                     marginRight: 20,
                 }}>
-                    <TouchableOpacity activeOpacity={0.5}>
+                    {/* <TouchableOpacity activeOpacity={0.5}>
                         <AntDesign name='camerao' size={24} color="black" />
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                     <TouchableOpacity onPress={() => navigation.navigate("AddChat")} activeOpacity={0.5}>
                         <SimpleLineIcons name="pencil" size={24} color="black" />
                     </TouchableOpacity>

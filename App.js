@@ -9,12 +9,13 @@ import HomeScreen from './screens/HomeScreen';
 import { initializeApp } from 'firebase/app'
 import AddChatScreen from './screens/AddChatScreen';
 import ChatScreen from './screens/ChatScreen';
+import HiddenScreen from './screens/HiddenScreen';
 
 const Stack = createNativeStackNavigator();
 
 // Styles applied to each page,
 const globalScreenOptions = {
-  headerStyle: { backgroundColor: '#2C6BED'},
+  headerStyle: { backgroundColor: '#FF83A8'},
   headerTitleStyle: { color: 'white'},
   headerTintColor: 'white'
 }
@@ -24,6 +25,7 @@ export default function App() {
     <NavigationContainer>
       {/* Screen options apply to each page */}
       <Stack.Navigator  screenOptions={globalScreenOptions}>
+        <Stack.Screen name='HiddenScreen' component={HiddenScreen} />
         <Stack.Screen name='Login' component={LoginScreen} />
         <Stack.Screen name='Register' component={RegisterScreen} />
         <Stack.Screen name='Home' component={HomeScreen} />

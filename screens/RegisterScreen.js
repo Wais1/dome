@@ -40,6 +40,7 @@ const RegisterScreen = ({ navigation }) => {
         </View>
 
         <Button 
+            buttonStyle={styles.registerButton}
             containerStyle={styles.button}
             raised
             onPress={register}
@@ -61,10 +62,15 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     button: {
-        width: 200,
+        width: 300,
         marginTop: 10,
+    },
+    registerButton: {
+        padding: 15,
+        backgroundColor: '#FF83A8'
     },
     inputContainer: {
         width: 300,
-    }
+    },
+    
 })

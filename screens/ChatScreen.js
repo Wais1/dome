@@ -107,7 +107,7 @@ const ChatScreen = ({ navigation, route }) => {
                     <TextInput onSubmitEditing={sendMessage} value={input} onChangeText={(text) => setInput(text)} placeholder='Signal Message' style={styles.textInput}  />
 
                     <TouchableOpacity onPress={sendMessage} activeOpacity={0.5}>
-                        <Ionicons name="send" size={24} color="#2B68E6" />
+                        <Ionicons name="send" size={24} color='#FF83A8' />
                     </TouchableOpacity>
                 </View>
                 </>
