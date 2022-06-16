@@ -1,7 +1,7 @@
 import { useLayoutEffect, useState } from 'react'
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { AntDesign, FontAwesome, Ionicons } from "@expo/vector-icons"
-import { withTheme } from 'react-native-elements'
+
 
 const HiddenScreen = ({navigation}) => {
     const [reminders, setReminders] = useState([0])
@@ -39,17 +39,17 @@ const HiddenScreen = ({navigation}) => {
     <View style={styles.container}>
       <Text style={styles.title}>Reminders</Text>
       {/* List */}
-      <TouchableOpacity style={styles.hiddenButton}>
+      {/* <TouchableOpacity style={styles.hiddenButton}>
           <Text style={{color:'white', marginTop:10, borderBottomWidth: 2, borderBottomColor:'white'}}>Resolve</Text>
           <TextInput style={styles.textInput}>Go to the gym</TextInput>
       </TouchableOpacity>
       <TouchableOpacity style={styles.hiddenButton}>
           <Text style={{color:'white', marginTop:10, borderBottomWidth: 2, borderBottomColor:'white'}}>Resolve</Text>
           <TextInput style={styles.textInput}>Pick up groceries</TextInput>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
-      <TouchableOpacity style={styles.addReminder} onPress={() => setReminders(reminders+1)}>
-            <FontAwesome style={{ borderColor:'white',  marginRight: 10}} name="plus" size={20} color='#F36332' />
+      <TouchableOpacity style={styles.addReminder}>
+            <FontAwesome style={{ marginRight: 10}} name="plus" size={20} color='#F36332' />
           <Text style={{color:'#F36332', fontWeight:'bold', marginTop:3, borderBottomWidth: 2, borderBottomColor:'white'}}>New Reminder</Text>
       </TouchableOpacity>
       

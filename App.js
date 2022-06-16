@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
@@ -25,7 +25,7 @@ export default function App() {
     <NavigationContainer>
       {/* Screen options apply to each page */}
       <Stack.Navigator  screenOptions={globalScreenOptions}>
-        <Stack.Screen name='HiddenScreen' component={HiddenScreen} />
+        <Stack.Screen name={Platform.OS === "ios" ? 'HiddenScreen' : 'GBV Org Login Screen'} component={Platform.OS === "ios" ? HiddenScreen : LoginScreen} />
         <Stack.Screen name='Login' component={LoginScreen} />
         <Stack.Screen name='Register' component={RegisterScreen} />
         <Stack.Screen name='Home' component={HomeScreen} />

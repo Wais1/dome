@@ -11,7 +11,7 @@ const RegisterScreen = ({ navigation }) => {
 
     useLayoutEffect(() => {
         navigation.setOptions({
-            headerBackTitle: "Back to Login"
+            headerBackTitle: "Login"
         })
     }, [navigation])
 
@@ -28,14 +28,14 @@ const RegisterScreen = ({ navigation }) => {
   return (
     <KeyboardAvoidingView behavior='padding' style={styles.container}>
     <StatusBar style="light" />
-      <Text h3 style={{ marginBottom: 50 }}>
+      <Text h3 style={{color:'#FF83A8', marginBottom: 30 }}>
         Create a Dome account
         </Text>
 
         <View style={styles.inputContainer}>
-            <Input placeholder='Full Name' autofocus type='text' value={name} onChangeText={(text) => setName(text)}/>
-            <Input placeholder='Email'  type='email' value={email} onChangeText={(text) => setEmail(text)}/>
-            <Input placeholder='Password'  type='password' secureTextEntry value={password} onChangeText={(text) => setPassword(text)}/>
+            <Input leftIcon={{ type: 'font-awesome', name: 'user', color:'#FF83A8', marginRight: 8}} placeholder='Full Name' autofocus type='text' value={name} onChangeText={(text) => setName(text)}/>
+            <Input leftIcon={{ type: 'font-awesome', name: 'envelope', color:'#FF83A8', marginRight: 8}}  placeholder='Email'  type='email' value={email} onChangeText={(text) => setEmail(text)}/>
+            <Input leftIcon={{ type: 'font-awesome', name: 'key', color:'#FF83A8', marginRight: 8}}  placeholder='Password'  type='password' secureTextEntry value={password} onChangeText={(text) => setPassword(text)}/>
             <Input placeholder='Profile Pic URL (optional)'  type='text' value={imageUrl} onChangeText={(text) => setImageUrl(text)} onSubmitEditing={register} />
         </View>
 
