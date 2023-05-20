@@ -59,7 +59,11 @@ function ConfirmPinScreen({ navigation, route }) {
         console.log('Error storing PIN:', error);
       }
       // TODO: Navigate to the next screen or perform any other action
-      navigation.navigate('Calculator');
+    //   navigation.navigate('Calculator');
+        navigation.reset({
+        index: 0,
+        routes: [{ name: 'Calculator' }],
+      });
     } else {
       // PIN verification failed
       console.log('PIN Verification Failed');
