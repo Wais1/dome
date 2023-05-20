@@ -133,10 +133,15 @@ const CalculatorScreen = ({navigation}) => {
 
   const getDisplayText = () => {
     if (error !== '') return 'Error';
-    if (secondValue !== '') return secondValue.replace(/^0+/, ''); // Remove leading zeros
-    if (firstValue === '') return '0';
   
-    return firstValue.replace(/^0+/, ''); // Remove leading zeros
+    // Remove leading zeros only when there are more than one digit
+    if (secondValue !== '' && secondValue !== '0') {
+      return secondValue.replace(/^0+/, '');
+    }
+  
+    if (firstValue === '' || firstValue === '0') return '0';
+  
+    return firstValue;
   };
   
   
