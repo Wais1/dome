@@ -5,9 +5,8 @@ import { auth, db } from '../firebase'
 import { Avatar } from "react-native-elements"
 import { AntDesign, SimpleLineIcons } from '@expo/vector-icons'
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreenVictim = ({ navigation }) => {
   const [chats, setChats] = useState([])
-  console.log(auth.currentUser.uid)
 
   const signOutUser = () => {
     auth.signOut().then(() => {
@@ -29,7 +28,7 @@ const HomeScreen = ({ navigation }) => {
       });
 
     return unsubscribe;
-  }, [])
+  }, []);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -69,10 +68,10 @@ const HomeScreen = ({ navigation }) => {
     })
   }
 
-
   return (
     <SafeAreaView>
       <ScrollView style={styles.container}>
+        <Text>Victim screen</Text>
         {chats.map(({ id, data: { chatName } }) => (
           <CustomListItem key={id} id={id} chatName={chatName} enterChat={enterChat} />
         ))}
@@ -81,7 +80,7 @@ const HomeScreen = ({ navigation }) => {
   )
 }
 
-export default HomeScreen
+export default HomeScreenVictim
 
 const styles = StyleSheet.create({
   container: {

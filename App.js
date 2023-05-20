@@ -15,6 +15,7 @@ import GetStartedScreen from './screens/GetStartedScreen';
 import SetupPinScreen from './screens/SetupPinScreen';
 import ConfirmPinScreen from './screens/ConfirmPinScreen';
 import CalculatorScreen from './screens/CalculatorScreen';
+import HomeScreenVictim from './screens/HomeScreenVictim';
 
 const Stack = createNativeStackNavigator();
 
@@ -41,6 +42,7 @@ export default function App() {
         <Stack.Screen name='VictimLogin' component={VictimLoginScreen} />
         <Stack.Screen name='Register' component={RegisterScreen} />
         <Stack.Screen name='Home' component={HomeScreen} />
+        <Stack.Screen name='HomeVictim' component={HomeScreenVictim} />
         <Stack.Screen name='AddChat' component={AddChatScreen} />
         <Stack.Screen name='Chat' component={ChatScreen} />
       </Stack.Navigator>

@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { KeyboardAvoidingView, StyleSheet, View } from 'react-native';
 import { Button, Image } from 'react-native-elements';
 import { StatusBar } from 'expo-status-bar';
-import { auth } from '../firebase';
+import { auth, db } from '../firebase';
+
 
 const VictimLoginScreen = ({ navigation }) => {
   useEffect(() => {
@@ -10,7 +11,7 @@ const VictimLoginScreen = ({ navigation }) => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       console.log(authUser);
       if (authUser) {
-        navigation.replace('Home');
+        navigation.replace('HomeVictim');
       }
     });
 
@@ -18,7 +19,29 @@ const VictimLoginScreen = ({ navigation }) => {
   }, []);
 
   const signInAnonymously = () => {
-    auth.signInAnonymously().catch((error) => alert(error));
+    auth
+    .signInAnonymously()
+    .then((userCredential) => {
+      const user = userCredential.user;
+      createChatsWithOrganizations(user);
+    })
+    .catch((error) => alert(error));  
+};
+
+const createChatsWithOrganizations = async (user) => {
+    const organizationsSnapshot = await db.collection('organizations').get();
+  
+    organizationsSnapshot.docs.forEach(async (doc) => {
+      const organizationData = doc.data();
+      const chatData = {
+        participants: [user.uid, organizationData.id],
+        chatName: organizationData.name,
+        createdAt: new Date(),
+      };
+  
+      // Add the new chat to the chats collection
+      await db.collection('chats').add(chatData);
+    });
   };
 
   return (
