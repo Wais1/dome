@@ -22,7 +22,7 @@ const HiddenScreen = ({navigation}) => {
                     width: 40,
                     marginRight: 20,
                 }}>
-                    <TouchableOpacity onPress={()=>navigation.navigate('Login')}>
+                    <TouchableOpacity onPress={()=>navigation.navigate('VictimLogin')}>
                         <Ionicons name="options" size={29} color="#3164CE" />
                     </TouchableOpacity>
                 </View>

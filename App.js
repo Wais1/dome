@@ -10,6 +10,11 @@ import { initializeApp } from 'firebase/app'
 import AddChatScreen from './screens/AddChatScreen';
 import ChatScreen from './screens/ChatScreen';
 import HiddenScreen from './screens/HiddenScreen';
+import VictimLoginScreen from './screens/VictimLoginScreen';
+import GetStartedScreen from './screens/GetStartedScreen';
+import SetupPinScreen from './screens/SetupPinScreen';
+import ConfirmPinScreen from './screens/ConfirmPinScreen';
+import CalculatorScreen from './screens/CalculatorScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,9 +29,16 @@ export default function App() {
   return (
     <NavigationContainer>
       {/* Screen options apply to each page */}
-      <Stack.Navigator  screenOptions={globalScreenOptions}>
-        <Stack.Screen name={Platform.OS === "ios" ? 'HiddenScreen' : 'GBV Org Login Screen'} component={Platform.OS === "ios" ? HiddenScreen : LoginScreen} />
+      <Stack.Navigator screenOptions={globalScreenOptions}>
+        <Stack.Screen name={Platform.OS === "ios" ? 'Get Started' : 'GBV Login'} 
+        component={Platform.OS === "ios" ? GetStartedScreen : LoginScreen} />
+        {/* <Stack.Screen name={Platform.OS === "ios" ? 'HiddenScreen' : 'GBV Org Login Screen'} 
+        component={Platform.OS === "ios" ? HiddenScreen : LoginScreen} /> */}
+        <Stack.Screen name='SetupPin' component={SetupPinScreen} />
+        <Stack.Screen name='ConfirmPin' component={ConfirmPinScreen} />
+        <Stack.Screen name='Calculator' component={CalculatorScreen} />
         <Stack.Screen name='Login' component={LoginScreen} />
+        <Stack.Screen name='VictimLogin' component={VictimLoginScreen} />
         <Stack.Screen name='Register' component={RegisterScreen} />
         <Stack.Screen name='Home' component={HomeScreen} />
         <Stack.Screen name='AddChat' component={AddChatScreen} />

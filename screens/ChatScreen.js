@@ -106,7 +106,7 @@ const ChatScreen = ({ navigation, route }) => {
                     ))}
                 </ScrollView>
                 <View style={styles.footer}>
-                    <TextInput onSubmitEditing={sendMessage} value={input} onChangeText={(text) => setInput(text)} placeholder='Signal Message' style={styles.textInput}  />
+                    <TextInput onSubmitEditing={sendMessage} value={input} onChangeText={(text) => setInput(text)} placeholder='Type your message' style={styles.textInput}  />
 
                     <TouchableOpacity onPress={sendMessage} activeOpacity={0.5}>
                         <Ionicons name="send" size={24} color='#FF83A8' />
