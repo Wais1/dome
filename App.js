@@ -34,7 +34,7 @@ export default function App() {
     <NavigationContainer>
       {/* Screen options apply to each page */}
       <Stack.Navigator screenOptions={globalScreenOptions}>
-        <Stack.Screen name={Platform.OS === "ios" ? 'Get Started' : 'GBV Login'} 
+        <Stack.Screen name={Platform.OS === "ios" || Platform.OS === "android" ? 'Get Started' : 'GBV Login'} 
         component={Platform.OS === "ios" ? GetStartedScreen : LoginScreen} />
         {/* <Stack.Screen name={Platform.OS === "ios" ? 'HiddenScreen' : 'GBV Org Login Screen'} 
         component={Platform.OS === "ios" ? HiddenScreen : LoginScreen} /> */}
