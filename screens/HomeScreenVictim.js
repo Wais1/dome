@@ -8,6 +8,14 @@ import { AntDesign, SimpleLineIcons } from '@expo/vector-icons'
 const HomeScreenVictim = ({ navigation }) => {
   const [chats, setChats] = useState([])
 
+  const goToCalculator = () => {
+    navigation.reset({
+        index: 0,
+        routes: [{ name: 'Calculator' }],
+      });
+  };
+
+
   const signOutUser = () => {
     auth.signOut().then(() => {
       navigation.replace("Login")
@@ -102,11 +110,18 @@ const HomeScreenVictim = ({ navigation }) => {
   return (
     <SafeAreaView>
       <ScrollView style={styles.container}>
-        <Text>Victim screen</Text>
         {chats.map(({ id, data: { chatName } }) => (
           <CustomListItem key={id} id={id} chatName={chatName} enterChat={enterChat} />
         ))}
       </ScrollView>
+
+        <TouchableOpacity 
+          style={styles.safeExitButton} 
+          onPress={goToCalculator}
+          activeOpacity={0.5}
+        >
+          <Text style={{ color: 'white', fontSize: 20}}>Safe Exit</Text>
+        </TouchableOpacity>
     </SafeAreaView>
   )
 }
@@ -116,5 +131,15 @@ export default HomeScreenVictim
 const styles = StyleSheet.create({
   container: {
     height: '100%'
-  }
+  },
+  safeExitButton: {
+    backgroundColor: '#FF83A8',
+    padding: 10,
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+    height: 190,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 })
