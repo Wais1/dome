@@ -14,6 +14,34 @@ const HomeScreenVictim = ({ navigation }) => {
     })
   }
 
+  const refreshChats = async () => {
+    const organizationsSnapshot = await db.collection('organizations').get();
+    const chatsSnapshot = await db.collection('chats').get();
+  
+    organizationsSnapshot.docs.forEach(async (organizationDoc) => {
+      const organizationData = organizationDoc.data();
+  
+      const chatExists = chatsSnapshot.docs.some(chatDoc => {
+        const chatData = chatDoc.data();
+        // Add a check to make sure participants and id are not undefined
+        return chatData && chatData.participants && organizationData && organizationData.id &&
+          Array.isArray(chatData.participants) && chatData.participants.includes(organizationData.id) && 
+          chatData.participants.includes(auth.currentUser.uid);
+      });
+  
+      if (!chatExists) {
+        const chatData = {
+          participants: [auth.currentUser.uid, organizationData.id],
+          chatName: organizationData.name,
+          createdAt: new Date(),
+        };
+  
+        // Add the new chat to the chats collection
+        await db.collection('chats').add(chatData);
+      }
+    });
+  };
+
   useEffect(() => {
     const unsubscribe = db
       .collection('chats')
@@ -43,6 +71,9 @@ const HomeScreenVictim = ({ navigation }) => {
               <Text style={{ color: 'white' }}>Logout</Text>
             </TouchableOpacity>
           ) : null}
+            <TouchableOpacity onPress={refreshChats} activeOpacity={0.5}>
+              <Text style={{ color: 'white' }}>Refresh</Text>
+            </TouchableOpacity>
         </View>
       ),
       headerRight: () => (

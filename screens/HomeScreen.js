@@ -33,7 +33,7 @@ const HomeScreen = ({ navigation }) => {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      title: "Dome",
+      title: `Dome for Organizations (${auth.currentUser.email})` ,
       headerStyle: { backgroundColor: '#FF83A8' },
       headerTitleStyle: { color: "white" },
       headerTintColor: "white",
@@ -74,7 +74,7 @@ const HomeScreen = ({ navigation }) => {
     <SafeAreaView>
       <ScrollView style={styles.container}>
         {chats.map(({ id, data: { chatName } }) => (
-          <CustomListItem key={id} id={id} chatName={chatName} enterChat={enterChat} />
+          <CustomListItem key={id} id={id} chatName={"Anon Support Chat"} enterChat={enterChat} />
         ))}
       </ScrollView>
     </SafeAreaView>
