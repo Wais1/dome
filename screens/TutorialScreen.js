@@ -4,7 +4,7 @@ import { Button, Input, Image } from "react-native-elements"
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { AntDesign, FontAwesome, Ionicons } from "@expo/vector-icons"
 
-function GetStartedScreen({navigation}) {
+function TutorialScreen({navigation}) {
     useLayoutEffect(() => {
         navigation.setOptions({
             title: '',
@@ -32,26 +32,27 @@ function GetStartedScreen({navigation}) {
     <View style={styles.container}>
       <StatusBar style="light" />
       <View style={{ flex: 1, justifyContent: 'center', alignItems:'center' }}>
-        <Image source={{ uri: 'https://i.ibb.co/S3tsK11/dome-logo.png' }} style={{ width: 150, height: 115, marginBottom: 20 }} />
-        <Text style={styles.title}>Dome</Text>
+        <Image source={{ uri: 'https://i.ibb.co/h24rt0k/Whats-App-Image-2023-05-22-at-13-07-36.jpg' }} style={{ width: 330, height: 415, marginBottom: 20 }} />
+
+        <Text style={styles.title}>Create secret pin</Text>
         <Text style={styles.subtitle}>
-        Dome allows users to contact helpline organizations with no notifications, anonymous interaction, and a hidden access system.
+        First, enter your private and secret pin that you'll use to access the chat screen ahead, and confirm it.
         </Text>
       </View>
       <View style={{ marginBottom: 30 }}>
         <Button
           containerStyle={styles.button}
           buttonStyle={styles.registerButton}
-          onPress={() => navigation.navigate('Tutorial')}
+          onPress={() => navigation.navigate('Tutorial2')}
           type="solid"
-          title="Get Started"
+          title="Continue 1/3"
 
         />
       </View>
     </View>
   )
 }
-export default GetStartedScreen
+export default TutorialScreen
 
 
 const styles = StyleSheet.create({
@@ -66,13 +67,14 @@ const styles = StyleSheet.create({
     },
     title: {
         marginTop: 10,
-        fontSize: 40,
+        fontSize: 25,
         textAlign: 'center',
         color: '#FF83A8',
         fontWeight: 'bold',
     },
     subtitle: {
-        marginTop: 20,
+        marginTop: 10,
+        marginBottom: 20,
         fontSize: 19,
         textAlign: 'center',
         color: "gray",

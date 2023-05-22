@@ -32,6 +32,8 @@ function SetupPinScreen({ navigation }) {
   }, [navigation]);
 
   const [pin, setPin] = useState('');
+  const [error, setError] = useState(false); // Add this line
+
 
   const handleNumberPress = (number) => {
     if (pin.length < 4) {
@@ -48,6 +50,11 @@ function SetupPinScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <StatusBar style="light" />
+      <Text style={styles.title}>Setup Pin</Text>
+      <Text style={styles.subtitle}>
+        Create a 4 digit pin to access your hidden screen. Make sure you remember this, as you cannot reset it.
+    </Text>
+      {error && <Text style={styles.errorText}>Please enter a 4 digit PIN.</Text>}
       <View style={styles.pinContainer}>
         <View style={styles.pinInputContainer}>
           {pin.length >= 1 ? <Text style={styles.pinBullet} /> : null}
@@ -94,11 +101,14 @@ function SetupPinScreen({ navigation }) {
             // Handle confirming the PIN
             console.log('PIN Confirmed');
             navigation.navigate('ConfirmPin', { pin });
+          } else {
+            setError(true); // Set error state when PIN is incorrect
           }
         }}
         type="solid"
         title="Confirm"
       />
+
     </View>
   );
 }
@@ -121,6 +131,21 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     height: '100%',
   },
+  title: {
+    marginTop: 10,
+    fontSize: 28,
+    textAlign: 'center',
+    color: '#FF83A8',
+    fontWeight: 'bold',
+    },
+    subtitle: {
+        marginTop: 10,
+        marginBottom: 20,
+        fontSize: 19,
+        textAlign: 'center',
+        color: "gray",
+        lineHeight: 28,
+    },
   pinContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -129,7 +154,7 @@ const styles = StyleSheet.create({
   pinInputContainer: {
     borderWidth: 1,
     borderColor: 'gray',
-    borderRadius: 5,
+    borderRadius: 100,
     width: 40,
     height: 40,
     justifyContent: 'center',
@@ -137,9 +162,9 @@ const styles = StyleSheet.create({
     marginHorizontal: 5,
   },
   pinBullet: {
-    width: 20,
-    height: 20,
-    borderRadius: 10,
+    width: 15,
+    height: 15,
+    borderRadius: 20,
     backgroundColor: 'black',
   },
   numberPadContainer: {
@@ -153,11 +178,16 @@ const styles = StyleSheet.create({
   numberButton: {
     width: 80,
     height: 80,
+    margin: 4,
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,
     borderColor: 'gray',
     borderRadius: 40,
+  },
+  errorText: {
+    color: 'red',
+    textAlign: 'center'
   },
   numberButtonText: {
     fontSize: 24,
@@ -177,7 +207,9 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   registerButton: {
-    padding: 15,
+    borderRadius: 30,
+    padding:15,
+    marginBottom: 20,
     color: '#FF83A8',
   },
 });

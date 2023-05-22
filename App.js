@@ -16,6 +16,9 @@ import SetupPinScreen from './screens/SetupPinScreen';
 import ConfirmPinScreen from './screens/ConfirmPinScreen';
 import CalculatorScreen from './screens/CalculatorScreen';
 import HomeScreenVictim from './screens/HomeScreenVictim';
+import TutorialScreen from './screens/TutorialScreen';
+import TutorialScreen2 from './screens/TutorialScreen2';
+import TutorialScreen3 from './screens/TutorialScreen3';
 
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +38,9 @@ export default function App() {
         component={Platform.OS === "ios" ? GetStartedScreen : LoginScreen} />
         {/* <Stack.Screen name={Platform.OS === "ios" ? 'HiddenScreen' : 'GBV Org Login Screen'} 
         component={Platform.OS === "ios" ? HiddenScreen : LoginScreen} /> */}
+        <Stack.Screen name='Tutorial' component={TutorialScreen} />
+        <Stack.Screen name='Tutorial2' component={TutorialScreen2} />
+        <Stack.Screen name='Tutorial3' component={TutorialScreen3} />
         <Stack.Screen name='SetupPin' component={SetupPinScreen} />
         <Stack.Screen name='ConfirmPin' component={ConfirmPinScreen} />
         <Stack.Screen name='Calculator' component={CalculatorScreen} />

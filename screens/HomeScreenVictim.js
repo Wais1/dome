@@ -74,13 +74,13 @@ const HomeScreenVictim = ({ navigation }) => {
       headerTintColor: "white",
       headerLeft: () => (
         <View style={{ marginLeft: 20 }}>
-          {Platform.OS !== 'ios' && Platform.OS !== 'android' ? (
+          {/* {Platform.OS !== 'ios' && Platform.OS !== 'android' ? (
             <TouchableOpacity onPress={signOutUser} activeOpacity={0.5}>
               <Text style={{ color: 'white' }}>Logout</Text>
             </TouchableOpacity>
-          ) : null}
+          ) : null} */}
             <TouchableOpacity onPress={refreshChats} activeOpacity={0.5}>
-              <Text style={{ color: 'white' }}>Refresh</Text>
+              <Text style={{ color: 'white', fontWeight:'600' }}>Refresh</Text>
             </TouchableOpacity>
         </View>
       ),
@@ -91,9 +91,9 @@ const HomeScreenVictim = ({ navigation }) => {
           width: 80,
           marginRight: 20,
         }}>
-          <TouchableOpacity onPress={() => navigation.navigate("AddChat")} activeOpacity={0.5}>
+          {/* <TouchableOpacity onPress={() => navigation.navigate("AddChat")} activeOpacity={0.5}>
             <SimpleLineIcons name="pencil" size={24} color="black" />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       )
     })

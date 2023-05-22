@@ -4,7 +4,7 @@ import { Button, Input, Image } from "react-native-elements"
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import { AntDesign, FontAwesome, Ionicons } from "@expo/vector-icons"
 
-function GetStartedScreen({navigation}) {
+function TutorialScreen2({navigation}) {
     useLayoutEffect(() => {
         navigation.setOptions({
             title: '',
@@ -32,26 +32,25 @@ function GetStartedScreen({navigation}) {
     <View style={styles.container}>
       <StatusBar style="light" />
       <View style={{ flex: 1, justifyContent: 'center', alignItems:'center' }}>
-        <Image source={{ uri: 'https://i.ibb.co/S3tsK11/dome-logo.png' }} style={{ width: 150, height: 115, marginBottom: 20 }} />
-        <Text style={styles.title}>Dome</Text>
+      <Image source={{ uri: 'https://help.apple.com/assets/640A52196275DE31D4371B5E/640A52226275DE31D4371B8B/en_US/91433b868ad67ee9e2a087cca75de95c.png' }} style={{ width: 230, height: 465, marginBottom: 20 }} />
+        <Text style={styles.title}>Hidden Screen</Text>
         <Text style={styles.subtitle}>
-        Dome allows users to contact helpline organizations with no notifications, anonymous interaction, and a hidden access system.
+            Enter your pin here onto the hidden screen, and then press the equals sign which is = to enter your hidden pin and access screen.
         </Text>
       </View>
       <View style={{ marginBottom: 30 }}>
         <Button
           containerStyle={styles.button}
           buttonStyle={styles.registerButton}
-          onPress={() => navigation.navigate('Tutorial')}
+          onPress={() => navigation.navigate('Tutorial3')}
           type="solid"
-          title="Get Started"
-
+          title="Continue (2/3)"
         />
       </View>
     </View>
   )
 }
-export default GetStartedScreen
+export default TutorialScreen2
 
 
 const styles = StyleSheet.create({
@@ -66,13 +65,14 @@ const styles = StyleSheet.create({
     },
     title: {
         marginTop: 10,
-        fontSize: 40,
+        fontSize: 25,
         textAlign: 'center',
         color: '#FF83A8',
         fontWeight: 'bold',
     },
     subtitle: {
-        marginTop: 20,
+        marginTop: 10,
+        marginBottom: 20,
         fontSize: 19,
         textAlign: 'center',
         color: "gray",

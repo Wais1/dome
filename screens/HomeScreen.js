@@ -41,7 +41,7 @@ const HomeScreen = ({ navigation }) => {
         <View style={{ marginLeft: 20 }}>
           {Platform.OS !== 'ios' && Platform.OS !== 'android' ? (
             <TouchableOpacity onPress={signOutUser} activeOpacity={0.5}>
-              <Text style={{ color: 'white' }}>Logout</Text>
+              <Text style={{ color: 'white', fontWeight: '600', padding: 25 }}>Logout</Text>
             </TouchableOpacity>
           ) : null}
         </View>
@@ -53,9 +53,6 @@ const HomeScreen = ({ navigation }) => {
           width: 80,
           marginRight: 20,
         }}>
-          <TouchableOpacity onPress={() => navigation.navigate("AddChat")} activeOpacity={0.5}>
-            <SimpleLineIcons name="pencil" size={24} color="black" />
-          </TouchableOpacity>
         </View>
       )
     })

@@ -33,6 +33,7 @@ function ConfirmPinScreen({ navigation, route }) {
   }, [navigation]);
 
   const [confirmedPin, setConfirmedPin] = useState('');
+  const [error, setError] = useState('');
 
   const handleNumberPress = (number) => {
     if (confirmedPin.length < 4) {
@@ -67,6 +68,7 @@ function ConfirmPinScreen({ navigation, route }) {
     } else {
       // PIN verification failed
       console.log('PIN Verification Failed');
+      setError('The pin does not match your entered one. Please try again.')
       // TODO: Show error message or perform any other action
     }
   };
@@ -76,7 +78,8 @@ function ConfirmPinScreen({ navigation, route }) {
       <StatusBar style="light" />
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text style={styles.title}>Confirm PIN</Text>
-        <Text style={styles.subtitle}>Please confirm your PIN</Text>
+        <Text style={styles.subtitle}>Please confirm your PIN by re-entering it</Text>
+        { error && (<Text style={styles.errorText}>{error}</Text>) }
         <View style={styles.pinContainer}>
           <View style={styles.pinInputContainer}>
             {confirmedPin.length >= 1 ? <Text style={styles.pinBullet} /> : null}
@@ -138,83 +141,94 @@ const NumberButton = ({ number, onPress }) => (
 export default ConfirmPinScreen;
 
 const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingLeft: 30,
-    paddingRight: 30,
-    paddingTop: 6,
-    backgroundColor: 'white',
-    height: '100%',
-  },
-  title: {
-    marginTop: 10,
-    fontSize: 35,
-    textAlign: 'center',
-    color: '#F36332',
-    fontWeight: 'bold',
-  },
-  subtitle: {
-    marginTop: 20,
-    fontSize: 19,
-  },
-  pinContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    marginTop: 20,
-  },
-  pinInputContainer: {
-    borderWidth: 1,
-    borderColor: 'gray',
-    borderRadius: 5,
-    width: 40,
-    height: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginHorizontal: 5,
-  },
-  pinBullet: {
-    width: 20,
-    height: 20,
-    borderRadius: 10,
-    backgroundColor: 'black',
-  },
-  numberPadContainer: {
-    marginTop: 30,
-  },
-  numberRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 15,
-  },
-  numberButton: {
-    width: 80,
-    height: 80,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderWidth: 1,
-    borderColor: 'gray',
-    borderRadius: 40,
-  },
-  numberButtonText: {
-    fontSize: 24,
-  },
-  emptyButton: {
-    width: 80,
-    height: 80,
-  },
-  deleteButton: {
-    width: 80,
-    height: 80,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  button: {
-    width: 300,
-    marginTop: 20,
-  },
-  registerButton: {
-    padding: 15,
-    color: '#FF83A8',
-  },
+    container: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      paddingLeft: 30,
+      paddingRight: 30,
+      paddingTop: 6,
+      backgroundColor: 'white',
+      height: '100%',
+    },
+    title: {
+      marginTop: 10,
+      fontSize: 28,
+      textAlign: 'center',
+      color: '#FF83A8',
+      fontWeight: 'bold',
+      },
+      subtitle: {
+          marginTop: 10,
+          marginBottom: 20,
+          fontSize: 19,
+          textAlign: 'center',
+          color: "gray",
+          lineHeight: 28,
+      },
+    pinContainer: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      marginTop: 20,
+    },
+    pinInputContainer: {
+      borderWidth: 1,
+      borderColor: 'gray',
+      borderRadius: 100,
+      width: 40,
+      height: 40,
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginHorizontal: 5,
+    },
+    pinBullet: {
+      width: 15,
+      height: 15,
+      borderRadius: 20,
+      backgroundColor: 'black',
+    },
+    numberPadContainer: {
+      marginTop: 30,
+    },
+    numberRow: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginBottom: 15,
+    },
+    numberButton: {
+      width: 80,
+      height: 80,
+      margin: 4,
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderWidth: 1,
+      borderColor: 'gray',
+      borderRadius: 40,
+    },
+    errorText: {
+      color: 'red',
+      textAlign: 'center'
+    },
+    numberButtonText: {
+      fontSize: 24,
+    },
+    emptyButton: {
+      width: 80,
+      height: 80,
+    },
+    deleteButton: {
+      width: 80,
+      height: 80,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    button: {
+      width: 300,
+      marginTop: 20,
+    },
+    registerButton: {
+      borderRadius: 30,
+      padding:15,
+      marginBottom: 20,
+      color: '#FF83A8',
+    },
 });
